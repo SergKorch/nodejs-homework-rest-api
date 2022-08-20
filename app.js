@@ -1,16 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
-const dotenv = require("dotenv")
-dotenv.config()
-const {DB_HOST} = process.env
-const mongoose = require('mongoose');
-
-main().then(() => console.log("Ok connect")).catch(err => console.log(err));
-
-async function main() {
-  await mongoose.connect(DB_HOST);
-}
+require("dotenv").config()
 
 const contactsRouter = require("./routes/api/contacts");
 
