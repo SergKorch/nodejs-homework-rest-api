@@ -24,7 +24,7 @@ const contactSchema = new Schema({
   //   unique: true,
   //   required: true,
   // },
-});
+}, {versionKey: false, timestamps: true});
 // contactSchema.post("save", handleSchemaValidationErrors);
 
 const addSchema = Joi.object({
