@@ -1,22 +1,4 @@
-const { Schema, model } = require("mongoose");
-const contactSchema = new Schema({
-  name: {
-    type: String,
-    required: [true, "Set name for contact"],
-  },
-  email: {
-    type: String,
-  },
-  phone: {
-    type: String,
-  },
-  favorite: {
-    type: Boolean,
-    default: false,
-  },
-});
-const Contact = model("contact", contactSchema);
-module.export = Contact
+
 // const fs = require("fs/promises");
 // const path = require("path");
 // const { nanoid } = require("nanoid");
