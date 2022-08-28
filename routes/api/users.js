@@ -2,12 +2,30 @@ const express = require("express");
 
 const { ctrlWrapper } = require("../../helpers");
 
-const ctrl = require("../../controllers/users");
+const ctrlGet = require("../../controllers/users");
 
-const { auth } = require("../../middlewares");
+const ctrl = require("../../controllers/auth");
+
+const { auth, validationBody } = require("../../middlewares");
+
+const { schemas } = require("../../models/user");
 
 const router = express.Router();
 
-router.get("/current", auth, ctrlWrapper(ctrl.getCurrent));
+router.get("/current", auth, ctrlWrapper(ctrlGet.getCurrent));
+
+router.post(
+  "/signup",
+  validationBody(schemas.signupSchema),
+  ctrlWrapper(ctrl.register)
+);
+
+router.post(
+  "/login",
+  validationBody(schemas.loginSchema),
+  ctrlWrapper(ctrl.login)
+);
+
+router.post("/logout", auth, ctrlWrapper(ctrl.logout));
 
 module.exports = router;
