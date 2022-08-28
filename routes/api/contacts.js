@@ -4,7 +4,7 @@ const ctrl = require("../../controllers/contacts");
 
 const { ctrlWrapper } = require("../../helpers");
 
-const {auth, validationBody, isValidId } = require("../../middlewares");
+const { auth, validationBody, isValidId } = require("../../middlewares");
 
 const { schemas } = require("../../models/contacts");
 
@@ -14,7 +14,12 @@ router.get("/", auth, ctrlWrapper(ctrl.getAll));
 
 router.get("/:contactId", isValidId, ctrlWrapper(ctrl.getById));
 
-router.post("/", auth, validationBody(schemas.addSchema), ctrlWrapper(ctrl.add));
+router.post(
+  "/",
+  auth,
+  validationBody(schemas.addSchema),
+  ctrlWrapper(ctrl.add)
+);
 
 router.put(
   "/:contactId",
