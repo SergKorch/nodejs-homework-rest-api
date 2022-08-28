@@ -18,7 +18,7 @@ const register = async (req, res) => {
     data: {
       user: {
         email,
-        // subscription
+        subscription: "starter",
       },
     },
   });
