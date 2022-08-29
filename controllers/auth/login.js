@@ -1,7 +1,10 @@
 const { Unauthorized } = require("http-errors");
 const jwt = require("jsonwebtoken");
-const { SECRET_KEY } = process.env;
+
 const { User } = require("../../models/user");
+
+const { SECRET_KEY } = process.env;
+
 const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
