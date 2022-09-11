@@ -3,12 +3,13 @@ const express = require("express");
 const { ctrlWrapper } = require("../../helpers");
 const ctrlGet = require("../../controllers/users");
 const ctrl = require("../../controllers/auth");
-const { auth, validationBody } = require("../../middlewares");
+const { auth, validationBody , upload} = require("../../middlewares");
 const { schemas } = require("../../models/user");
 
 const router = express.Router();
 
 router.get("/current", auth, ctrlWrapper(ctrlGet.getCurrent));
+router.patch("/avatars", auth, upload.single("avatar"), ctrlWrapper(ctrlGet.updateAvatar));
 
 router.post(
   "/signup",
