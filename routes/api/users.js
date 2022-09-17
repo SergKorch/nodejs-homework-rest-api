@@ -30,4 +30,10 @@ router.post(
 
 router.post("/logout", auth, ctrlWrapper(ctrl.logout));
 
+router.get("/verify/:verificationToken", ctrlWrapper(ctrlGet.verifyEmail));
+
+router.get('/verify/:verificationToken', ctrlWrapper(ctrlGet.verifyEmail));
+
+router.post('/verify', validationBody(schemas.verifyEmailSchema), ctrlWrapper(ctrlGet.resendVerifyEmail));
+
 module.exports = router;
